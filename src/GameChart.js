@@ -45,7 +45,7 @@ export class GameChart extends React.Component {
                 {x: 1, y: 1, gameid: 138704, title: 'Northern Pacific'}                
             ],
             gameDetails: [],
-            externalMutations: undefined /* Used by Victory tables to respond to events from outside elements */
+            externalMutations: undefined /* Used by Victory charts to respond to events from outside elements */
         } 
     }
       
