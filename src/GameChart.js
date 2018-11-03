@@ -41,7 +41,8 @@ export class GameChart extends React.Component {
                 {x: 1, y: 1, gameid: 157, title: 'Eurorails'},   
                 {x: 1, y: 1, gameid: 166571, title: 'Tramways'},   
                 {x: 1, y: 1, gameid: 23540, title: '1889: History of Shikoku Railways'},   
-                {x: 1, y: 1, gameid: 41749, title: 'American Rails'}
+                {x: 1, y: 1, gameid: 41749, title: 'American Rails'},
+                {x: 1, y: 1, gameid: 138704, title: 'Northern Pacific'}                
             ],
             gameDetails: [],
             externalMutations: undefined /* Used by Victory tables to respond to events from outside elements */
