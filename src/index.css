@@ -24,9 +24,9 @@ h1 {
 
 .chart-container {
   width: 33%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 100px;
+  left: 30px;
 }
 
 table {

@@ -199,6 +199,7 @@ export class GameChart extends React.Component {
                     <tbody>
                         {newDetails.map((game, index) => {
                             let gameName='';
+                            let gameRank='';
                             let mechanics = '';
 
                             /* Ideally this would get replaced by a full regex, but for now these are the only special characters 
@@ -208,6 +209,12 @@ export class GameChart extends React.Component {
                                 gameName = game.name[0]._value.replace('&#039;', '\'').replace('&amp;', '&');
                             } else {
                                 gameName = game.name._value.replace('&#039;', '\'').replace('&amp;', '&');;
+                            }
+
+                            if(Array.isArray(game.statistics.ratings.ranks.rank)) {
+                                gameRank = game.statistics.ratings.ranks.rank[0]._value;
+                            } else {
+                                gameRank = game.statistics.ratings.ranks.rank._value;
                             }
 
                             game.link.forEach( (item) => {
@@ -220,7 +227,7 @@ export class GameChart extends React.Component {
 
                             return (
                                 <tr key={index} data-item={game._id} data-dir="asc" onMouseOver={() => this.onHighlight(game._id)} onMouseOut={() => this.onResetHighlight(game._id)}>
-                                    <td data-type="rank">{game.statistics.ratings.ranks.rank[0]._value}</td>
+                                    <td data-type="rank">{gameRank}</td>
                                     <td data-type="title">{gameName} <a className="link-button" href={'https://www.boardgamegeek.com/boardgame/'+game._id}>&gt;</a></td>
                                     <td data-type="mechanics">{mechanics}</td>
                                 </tr>
