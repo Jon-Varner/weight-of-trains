@@ -1,0 +1,37 @@
+table {
+    border-collapse: collapse;
+    margin-bottom: 100px;
+    width: 66%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    th {
+        border-bottom: 1px solid #dddddd;
+        cursor: pointer;
+    }
+    
+    td {
+        text-align: left;
+        padding: 5px 20px;
+        cursor: pointer;
+    
+        &:first-child {
+            text-align: center;
+        }
+
+        &:nth-child(2) {
+            white-space:nowrap;
+        }
+        
+        .linkButton {
+            text-decoration: none;
+            font-weight: bold;
+            color: rgb(33, 83, 105);
+        }
+    }
+    
+    tr:nth-child(odd) td {
+        background-color: #dddddd;
+    }
+}

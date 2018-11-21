@@ -5,6 +5,7 @@
   "homepage": "https://Jon-Varner.github.io/weight-of-trains",
   "dependencies": {
     "fast-xml-parser": "^3.12.5",
+    "node-sass": "^4.10.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",

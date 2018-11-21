@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GameChart } from './GameChart';
+import { Layout } from './containers/Layout/Layout';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{this.state.title}</h1>
-        <GameChart />
+        <Layout />
       </div>
     );
   }
