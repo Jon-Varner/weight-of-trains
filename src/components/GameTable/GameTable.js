@@ -22,7 +22,7 @@ const gameTable = (props) => {
                             onMouseOver={() => props.mousedOver(game.id)} 
                             onMouseOut={() => props.mousedOut(game.id)}>
                             <td data-type="rank">{game.rank}</td>
-                            <td data-type="title">{game.title} <a className={classes.linkButton} href={'https://www.boardgamegeek.com/boardgame/'+game._id}>&gt;</a></td>
+                            <td data-type="title">{game.title} <a className={classes.linkButton} href={'https://www.boardgamegeek.com/boardgame/'+game.id}>&gt;</a></td>
                             <td data-type="mechanics">{game.mechanics}</td>
                         </tr>
                     );

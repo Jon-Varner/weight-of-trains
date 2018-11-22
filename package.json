@@ -9,6 +9,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
+    "serve": "^10.1.1",
     "victory": "^30.6.0"
   },
   "scripts": {
