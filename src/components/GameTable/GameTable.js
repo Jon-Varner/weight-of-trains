@@ -4,7 +4,6 @@ import classes from './GameTable.module.scss';
 
 const gameTable = (props) => {
     return (
-                /* Note that sorting is not yet functional */
         <table className="sortable-table">
             <thead>
                 <tr>
