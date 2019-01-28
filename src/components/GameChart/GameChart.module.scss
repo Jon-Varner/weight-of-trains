@@ -1,6 +1,18 @@
 .chartContainer {
-    width: 33%;
-    position: fixed;
-    top: 100px;
-    left: 30px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  padding-top: 5vw;
+  padding-left: 2%;
+
+  @media screen and (max-width: 1023px) {
+    background-color: #eeeeee;
+    z-index: 1000;
   }
+
+  @media screen and (min-width: 1024px) {
+    top: 80px;
+    width: 33%;
+    padding-left: 2%;
+  }
+}

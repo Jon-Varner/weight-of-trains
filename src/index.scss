@@ -1,0 +1,32 @@
+* {
+  font-family: "Slabo 13px", serif;
+  color: #333333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #eeeeee;
+}
+
+article {
+  max-width: 1440px;
+  margin: auto;
+  position: relative;
+}
+
+h1 {
+  font-family: "Ultra", serif;
+  font-weight: normal;
+  font-size: 7vw;
+  margin: 1vw;
+  position: fixed;
+  z-index: 1010;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 60px;
+    width: 60%;
+    left: 20%;
+  }
+}
