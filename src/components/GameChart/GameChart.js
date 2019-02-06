@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import {
   VictoryScatter,
   VictoryChart,
@@ -12,7 +14,7 @@ import classes from "./GameChart.module.scss";
 const gameChart = props => {
   let data = [...props.data];
 
-  data.map(item => {
+  data.forEach(item => {
     item.x = item.weight;
     item.y = item.playingTime;
   });
@@ -75,6 +77,12 @@ const gameChart = props => {
       </VictoryChart>
     </div>
   );
+};
+
+gameChart.propTypes = {
+  data: PropTypes.array.isRequired,
+  mutations: PropTypes.array.isRequired,
+  convert: PropTypes.func.isRequired
 };
 
 export default gameChart;

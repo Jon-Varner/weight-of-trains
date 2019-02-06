@@ -6,7 +6,7 @@ import GameTable from "../../components/GameTable/GameTable";
 /*  Unfortunately, the BGG API does not support returning a list of games by category,
 or even a list of top ranked games, so I hard-coded these IDs.
 I also hard-coded the titles just so this array is meaningful to anyone who reads it. */
-let gameBasics = [
+const gameBasics = [
   { gameid: 144733, title: "Russian Railroads" },
   { gameid: 14996, title: "Ticket To Ride: Europe" },
   { gameid: 17133, title: "Railways of the World" },
@@ -39,14 +39,14 @@ let gameBasics = [
   { gameid: 138704, title: "Northern Pacific" }
 ];
 
-export class Layout extends Component {
+class Layout extends Component {
   state = {
     gameDetails: [],
-    externalMutations: undefined /* Used by Victory charts to respond to events from outside elements */
+    externalMutations: [] /* Used by Victory charts to respond to events from outside elements */
   };
 
   componentDidMount() {
-    let gameIDs = gameBasics.map((a, i) => `${a.gameid}`).join(",");
+    let gameIDs = gameBasics.map(a => `${a.gameid}`).join(",");
 
     fetch("https://www.boardgamegeek.com/xmlapi2/thing?stats=1&id=" + gameIDs)
       .then(response => response.text())
@@ -65,9 +65,9 @@ export class Layout extends Component {
           key => gameData.items.item[key]
         );
 
-        const reduced = [];
+        const simplified = [];
 
-        arr.forEach((game, index) => {
+        arr.forEach(game => {
           let obj = {};
           let title = "";
           let rank = "";
@@ -105,10 +105,10 @@ export class Layout extends Component {
           obj.weight = game.statistics.ratings.averageweight._value;
           obj.playingTime = game.playingtime._value;
 
-          reduced.push(obj);
+          simplified.push(obj);
         });
 
-        this.setState({ gameDetails: reduced });
+        this.setState({ gameDetails: simplified });
       });
   }
 
@@ -150,6 +150,7 @@ export class Layout extends Component {
     });
   };
 
+  /* Sorts the columns in the table */
   onSort = (event, key) => {
     const arr = this.state.gameDetails;
     const dir = event.currentTarget.dataset.direction;
@@ -194,3 +195,5 @@ export class Layout extends Component {
     );
   }
 }
+
+export default Layout;
