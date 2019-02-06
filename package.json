@@ -2,11 +2,10 @@
   "name": "train-weight",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Jon-Varner.github.io/weight-of-trains",
   "dependencies": {
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
-    "fast-xml-parser": "^3.12.5",
+    "fast-xml-parser": "^3.12.12",
     "jest-enzyme": "^7.0.1",
     "node-sass": "^4.10.0",
     "react": "^16.6.0",
