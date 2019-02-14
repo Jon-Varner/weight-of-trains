@@ -41,14 +41,22 @@ const gameBasics = [
 
 class Layout extends Component {
   state = {
+    error: null,
+    errorInfo: null,
     gameDetails: [],
     externalMutations: [] /* Used by Victory charts to respond to events from outside elements */
   };
 
   componentDidMount() {
-    let gameIDs = gameBasics.map(a => `${a.gameid}`).join(",");
+    const gameIDs = gameBasics.map(a => `${a.gameid}`).join(",");
 
     fetch("https://www.boardgamegeek.com/xmlapi2/thing?stats=1&id=" + gameIDs)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("The BGG API is not reachable at this time.");
+        }
+        return response;
+      })
       .then(response => response.text())
       .then(text => {
         const options = {
@@ -109,7 +117,18 @@ class Layout extends Component {
         });
 
         this.setState({ gameDetails: simplified });
+      })
+      .catch(error => {
+        console.log(error);
+        throw new Error("There is a problem with the BGG API at this time.");
       });
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({
+      error: error,
+      errorInfo: errorInfo
+    });
   }
 
   convertMinsToHrsMins = mins => {
@@ -178,8 +197,21 @@ class Layout extends Component {
   };
 
   render() {
+    if (this.state.errorInfo) {
+      return (
+        <main>
+          <h2>Something went wrong.</h2>
+          <details style={{ whiteSpace: "pre-wrap" }}>
+            {this.state.error && this.state.error.toString()}
+            <br />
+            {this.state.errorInfo.componentStack}
+          </details>
+        </main>
+      );
+    }
+
     return (
-      <article>
+      <main>
         <GameChart
           data={this.state.gameDetails}
           mutations={this.state.externalMutations}
@@ -191,7 +223,7 @@ class Layout extends Component {
           mousedOver={this.onHighlight}
           mousedOut={this.onResetHighlight}
         />
-      </article>
+      </main>
     );
   }
 }
